@@ -1,0 +1,8 @@
+
+
+CREATE TABLE OrderProducts
+(
+orderID INT FOREIGN KEY REFERENCES Orders(Id),
+productID INT FOREIGN KEY REFERENCES Products(Id)
+)
+
