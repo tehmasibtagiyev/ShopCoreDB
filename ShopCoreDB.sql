@@ -7,6 +7,7 @@ orderID INT FOREIGN KEY REFERENCES Orders(Id),
 productID INT FOREIGN KEY REFERENCES Products(Id)
 )
 
+-- ========================
 
 SELECT * FROM Payments
 DROP TABLE Payments 
@@ -108,7 +109,114 @@ FOREIGN KEY (orderID) REFERENCES Orders(Id)
 ALTER TABLE OrderProducts ADD CONSTRAINT FK__OrderProd__produ__778AC167
 FOREIGN KEY (productID) REFERENCES Products(Id)
 
+-- Let's start the calculations
+-- Orders
+SELECT * FROM Orders
+SELECT * FROM Orders WHERE paymentID IS NULL
+SELECT * FROM Orders WHERE paymentID IS NOT NULL
+SELECT COUNT(*) FROM Orders WHERE paymentID IS NULL
+SELECT COUNT(*) FROM Orders WHERE paymentID IS NOT NULL
+SELECT c.Id, c.[Name], c.Email, c.[Password], o.[Date], o.Id, p.* FROM Orders o
+JOIN Customers c
+ON o.customerID = c.Id
+JOIN OrderProducts op
+ON op.orderID = o.Id
+JOIN Products p
+ON p.Id = op.productID
+WHERE paymentID IS NULL 
 
+SELECT c.Id, c.[Name], c.Email, c.[Password], o.[Date], o.Id, p.* FROM Orders o
+JOIN Customers c
+ON o.customerID = c.Id
+JOIN OrderProducts op
+ON op.orderID = o.Id
+JOIN Products p
+ON p.Id = op.productID
+WHERE paymentID IS NOT NULL 
 
+SELECT p.Id, p.[Name], p.Price, pay.PayType FROM Orders o
+JOIN OrderProducts op
+ON op.orderID = o.Id
+JOIN Products p
+ON p.Id = op.productID
+JOIN Payments pay
+ON pay.Id = o.paymentID
+WHERE paymentID IS NOT NULL
 
+SELECT COUNT(p.Id) FROM Orders o
+JOIN OrderProducts op
+ON op.orderID = o.Id
+JOIN Products p
+ON p.Id = op.productID
+WHERE paymentID IS NOT NULL
 
+SELECT SUM(p.Price) / COUNT(p.Price) AS Average FROM Orders o
+JOIN OrderProducts op
+ON op.orderID = o.Id
+JOIN Products p
+ON p.Id = op.productID
+WHERE paymentID IS NOT NULL
+
+SELECT AVG(p.Price) AS Average FROM Orders o
+JOIN OrderProducts op
+ON op.orderID = o.Id
+JOIN Products p
+ON p.Id = op.productID
+WHERE paymentID IS NOT NULL
+
+SELECT SUM(p.Price)  FROM Orders o
+JOIN OrderProducts op
+ON op.orderID = o.Id
+JOIN Products p
+ON p.Id = op.productID
+WHERE paymentID IS NOT NULL
+
+SELECT SUM(p.Price) - 
+(SELECT SUM(p.Price) FROM Orders o
+JOIN OrderProducts op
+ON op.orderID = o.Id
+JOIN Products p
+ON p.Id = op.productID
+WHERE paymentID IS NULL) FROM Orders o
+JOIN OrderProducts op
+ON op.orderID = o.Id
+JOIN Products p
+ON p.Id = op.productID
+WHERE paymentID IS NOT NULL
+
+SELECT SUM(p.Price) FROM Orders o
+JOIN OrderProducts op
+ON op.orderID = o.Id
+JOIN Products p
+ON p.Id = op.productID
+WHERE paymentID IS NULL
+
+-- Customers
+SELECT SUM(p.Price) FROM Customers c
+JOIN Orders o
+ON o.customerID = c.Id 
+JOIN OrderProducts op
+ON op.orderID = o.Id
+JOIN Products p
+ON p.Id = op.productID
+WHERE c.[Name] = 'Xeyal'
+
+-- Products
+SELECT * FROM Products
+SELECT MAX(Price) FROM Products
+SELECT MIN(Price) FROM Products
+
+SELECT * FROM Products 
+WHERE Price >= ALL(SELECT p.Price FROM Products p)
+
+SELECT * FROM Products p
+WHERE p.Price > ANY(SELECT pp.Price FROM Products pp)
+
+SELECT * FROM Products p WHERE
+p.Price >= ALL(
+SELECT pp.Price FROM Products pp)
+
+SELECT * FROM Products p 
+WHERE p.Price <= ALL
+(SELECT pp.Price FROM Products pp
+WHERE p.categoryID = pp.categoryID)
