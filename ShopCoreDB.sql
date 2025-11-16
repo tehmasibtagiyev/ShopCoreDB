@@ -265,6 +265,13 @@ FULL JOIN Payments p
 ON p.Id = o.paymentID 
 ORDER BY o.customerID 
 
+-- TOP 
+SELECT TOP 3 * FROM Orders
+ORDER BY [Date] DESC
 
+SELECT COUNT(*) FROM Orders
+
+SELECT TOP 5 PERCENT * FROM Orders
+ORDER BY Id 
 
 
