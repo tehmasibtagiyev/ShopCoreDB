@@ -220,3 +220,33 @@ SELECT * FROM Products p
 WHERE p.Price <= ALL
 (SELECT pp.Price FROM Products pp
 WHERE p.categoryID = pp.categoryID)
+
+-- UNION, UNION ALL, INTERSECT and EXCEPT
+
+SELECT Id FROM Products
+UNION 
+SELECT Id FROM Customers
+
+SELECT [PayType] FROM Payments
+UNION ALL 
+SELECT Descriptioin FROM Categories
+
+SELECT COUNT(*) FROM 
+(
+SELECT [Name] FROM Products
+UNION ALL 
+SELECT [Name] FROM Customers
+)A
+
+SELECT orderID FROM OrderProducts
+INTERSECT
+SELECT Id FROM Orders
+
+SELECT Descriptioin FROM Categories
+EXCEPT
+SELECT [Name] FROM Products
+
+SELECT orderID FROM OrderProducts
+EXCEPT
+SELECT Id FROM Payments
+
