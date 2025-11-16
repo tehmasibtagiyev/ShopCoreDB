@@ -250,3 +250,21 @@ SELECT orderID FROM OrderProducts
 EXCEPT
 SELECT Id FROM Payments
 
+-- CASE
+SELECT * FROM Orders
+SELECT * FROM Payments
+SELECT o.Id, o.[Date], paymentID ,
+CASE
+   WHEN p.PayType LIKE '%ATM%' THEN 'The orders payed with ATM'
+   WHEN p.PayType LIKE '%Personal%' THEN 'The orders payed with Personal Card'
+   WHEN p.PayType LIKE '%Credit%' THEN 'The orders payed with Credit Card'
+   ELSE 'The orders payed cash'
+END AS 'Paying Types'
+FROM Orders o 
+FULL JOIN Payments p
+ON p.Id = o.paymentID 
+ORDER BY o.customerID 
+
+
+
+
