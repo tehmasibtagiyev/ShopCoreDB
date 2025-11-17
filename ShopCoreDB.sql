@@ -274,4 +274,39 @@ SELECT COUNT(*) FROM Orders
 SELECT TOP 5 PERCENT * FROM Orders
 ORDER BY Id 
 
+-- ============================
+-- INNER JOIIN 
+SELECT * FROM Products p
+JOIN Categories c
+ON c.Id = p.Id
+
+SELECT * FROM Products p
+LEFT JOIN Categories c
+ON p.Id = c.Id
+
+SELECT * FROM Categories c
+LEFT JOIN Products p
+ON p.Id = c.Id
+
+SELECT * FROM Categories c
+RIGHT JOIN Products p
+ON p.Id = c.Id
+
+SELECT * FROM Products p
+RIGHT JOIN Categories c
+ON c.Id = p.Id
+
+SELECT * FROM Products p
+FULL JOIN Categories c
+ON c.Id = p.Id
+
+SELECT * FROM Categories c
+FULL JOIN Products p
+ON p.Id = c.Id
+
+-- WITH RELATION
+SELECT * FROM Products p
+RIGHT  JOIN Categories c
+ON p.categoryID = c.Id
+
 
