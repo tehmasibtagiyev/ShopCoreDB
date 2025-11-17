@@ -327,8 +327,20 @@ WHERE [Name] LIKE '[R,a,b]%'
 
 SELECT * FROM Categories
 
+SELECT [Name] FROM Products
+WHERE Id > 4 AND Price < 5000
 
+DELETE Categories FROM Categories c
+JOIN Products p
+ON p.Id = c.Id
+WHERE c.Id = 6
+SELECT * FROM Categories
 
+SELECT TOP(5) Id, [Name] FROM Products
+ORDER BY Id DESC
+
+SELECT DISTINCT categoryID, [Name]  FROM Products
+SELECT SUM(DISTINCT categoryID) FROM Products
 
 
 
