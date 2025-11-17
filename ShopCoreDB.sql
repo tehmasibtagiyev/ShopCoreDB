@@ -309,4 +309,29 @@ SELECT * FROM Products p
 RIGHT  JOIN Categories c
 ON p.categoryID = c.Id
 
+UPDATE Categories 
+SET Categories.[Name] = p.[Name]
+FROM Categories c
+JOIN Products p
+ON c.Id = p.categoryID
+WHERE c.Id IN(2,3,4)
+
+UPDATE Categories SET [Name] = 'Phones' 
+WHERE [Name] LIKE '%16%'
+
+UPDATE Categories SET [Name] = 'Clothes' 
+WHERE [Name] LIKE '%Sh%'
+
+UPDATE Categories SET [Name] = 'Kitchenware'
+WHERE [Name] LIKE '[R,a,b]%'
+
+SELECT * FROM Categories
+
+
+
+
+
+
+
+
 
