@@ -7,6 +7,14 @@ orderID INT FOREIGN KEY REFERENCES Orders(Id),
 productID INT FOREIGN KEY REFERENCES Products(Id)
 )
 
+CREATE TABLE Stu
+(
+Id INT PRIMARY KEY,
+[Name] NVARCHAR(20),
+[Subject] NVARCHAR(25),
+Mark INT
+)
+
 -- ========================
 
 SELECT * FROM Payments
@@ -341,6 +349,37 @@ ORDER BY Id DESC
 
 SELECT DISTINCT categoryID, [Name]  FROM Products
 SELECT SUM(DISTINCT categoryID) FROM Products
+
+--==============================
+-- GROUP BY, HAVING, ORDER BY
+SELECT * FROM Products
+SELECT [Name], SUM(Price) FROM Products
+GROUP BY [Name]
+
+SELECT * FROM OrderProducts
+SELECT  productID, COUNT(*) Total_Count FROM OrderProducts
+GROUP BY  productID
+
+SELECT * FROM Stu
+SELECT [Subject], MAX(Mark) FROM Stu
+GROUP BY [Subject]
+
+SELECT [Name], SUM(Mark) FROM Stu
+GROUP BY [Name]
+HAVING [Name] = 'PQR'
+
+SELECT [Name], SUM(Mark) FROM Stu
+GROUP BY [Name]
+HAVING SUM(Mark) > 150
+
+SELECT SUM(Mark) FROM Stu HAVING SUM(Mark) > 88
+
+SELECT * FROM Products
+ORDER BY 3
+
+
+
+
 
 
 
