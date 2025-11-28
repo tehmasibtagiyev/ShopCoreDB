@@ -377,6 +377,23 @@ SELECT SUM(Mark) FROM Stu HAVING SUM(Mark) > 88
 SELECT * FROM Products
 ORDER BY 3
 
+SELECT * FROM Orders
+SELECT ASCII(Price) FROM Products
+SELECT UNICODE([Name]) FROM Products
+SELECT CHARINDEX('a', [Name]) FROM Products
+SELECT CONCAT([Name],'--',[Password]) FROM Customers
+SELECT CONCAT_WS('--',[Name],[Password]) FROM Customers
+SELECT LEFT(Price, 3) FROM Products
+SELECT LEFT_SHIFT(4, 3)
+SELECT Id * 2 FROM Products
+
+
+
+
+
+
+
+
 
 
 
