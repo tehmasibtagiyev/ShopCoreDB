@@ -377,6 +377,8 @@ SELECT SUM(Mark) FROM Stu HAVING SUM(Mark) > 88
 SELECT * FROM Products
 ORDER BY 3
 
+--==============================
+-- String Functions
 SELECT * FROM Orders
 SELECT ASCII(Price) FROM Products
 SELECT UNICODE([Name]) FROM Products
@@ -394,15 +396,39 @@ SELECT UPPER([Name]) FROM Products
 SELECT LTRIM([Name]) FROM Stu
 SELECT LTRIM([Name],'A') FROM Products
 SELECT RTRIM([Name], '[CYBZDCRQ]') FROM Stu
-SELECT TRIM('Z' FROM [Name]) FROM Stu
-SELECT SUBSTRING([Name], 2, 4) FROM Customers
-SELECT STRING_AGG([Name], ' ') FROM Stu WHERE Id IN(1,2)
+SELECT TRIM('c' FROM [Name]) FROM Stu
+SELECT SUBSTRING([Name], 2, 3) FROM Customers
+SELECT STRING_AGG([Name], '+++') FROM Stu WHERE Id IN(1,2)
 SELECT REPLACE([Name], 'A', 'O') FROM Stu
 SELECT STUFF([Subject], 2, 2, 'C') FROM Stu
 SELECT REVERSE(Mark) FROM Stu
-SELECT REPLICATE(Mark, 2) FROM Stu
-SELECT STDEV(Price) FROM Products
-SELECT * FROM Stu
+SELECT REPLICATE(Mark, 4) FROM Stu
+SELECT stdev(Price) FROM Products
+--==============================
+-- Numeric Functions
+ALTER TABLE Stu ALTER COLUMN Point DECIMAL(18, 2)
+SELECT ABS(Mark) FROM Stu
+SELECT SIGN(Mark) FROM Stu
+SELECT CEILING(Point) FROM Stu
+SELECT FLOOR(Point) FROM Stu
+SELECT ROUND(Point, 1) FROM Stu
+SELECT POWER(Id, 2) FROM Stu
+SELECT Id * Id FROM Stu
+SELECT SQUARE(Point) FROM Stu
+SELECT SQRT(Point) FROM Stu
+
+--==============================
+-- Conversion Functions
+SELECT CAST(Id AS DECIMAL(9, 6)) FROM Stu
+SELECT TRY_CAST([Name] AS INT) FROM Stu
+SELECT CONVERT(varchar, [Date], 1) FROM Orders
+SELECT TRY_CONVERT(INT, [Name]) FROM Stu
+
+
+
+
+
+
 
 
 
