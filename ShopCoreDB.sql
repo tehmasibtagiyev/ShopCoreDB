@@ -1,4 +1,4 @@
-
+﻿
 USE ShopCoreDB
 
 CREATE TABLE OrderProducts
@@ -77,7 +77,7 @@ INSERT INTO Products VALUES
 ('Trousers', 56, 'Could refer to two very different things', 3),
 ('Refrigerator', 8129, 'A refrigerator is an appliance that cools food', 4),
 ('Iphone 16 Pro', 2960, 'Features a larger 6.3-inch Super Retina XDR display', 2),
-('Samsung S24 FE', 4420, 'Snap it, circle it, tap it � discover why it', 2),
+('Samsung S24 FE', 4420, 'Snap it, circle it, tap it – discover why it', 2),
 ('T-Shirt', 190.5, 'Lightweight, typically cotton-knit pullover', 3),
 ('Washing machine', 7930, 'Appliance that automatically cleans clothes using water',4),
 ('Acer I7', 2366, 'Taiwanese multinational company that manufactures', 1)
@@ -456,7 +456,7 @@ SELECT DAY(Zaman) FROM Times -- Return INT
 SELECT DATEPART(year, Zaman) FROM Times -- Return INT
 SELECT DATETRUNC(MONTH, Zaman) FROM Times
 
--- FROMPARTS
+-- Datefromparts Functions
 SELECT DATEFROMPARTS(2018, 4, 19) -- Return Date
 SELECT DATETIME2FROMPARTS(2013,7,16,10,5,7,9,6) -- Return Datetime2
 SELECT DATETIMEFROMPARTS(2013,7,16,10,5,7,89) -- Return Datetime
@@ -464,6 +464,18 @@ SELECT DATETIMEOFFSETFROMPARTS(2013,7,16,10,5,7,9,6,5,7) -- Return Datetimeoffse
 SELECT SMALLDATETIMEFROMPARTS(2018, 4, 19, 21, 2) -- Return Smalldatetimefromparts
 SELECT TIMEFROMPARTS(2018, 4, 19, 21, 2) -- Return Time
 -- ==========================
+
+-- Datediff Functions Return İNT
+SELECT DATEDIFF(DAY, '2024-01-01', '2025-01-10')
+SELECT DATEDIFF(YEAR, '2000-05-15', '2025-12-01')
+SELECT * FROM Orders
+SELECT * FROM Orders o WHERE o.[Date] >=
+ALL(SELECT os.[Date] FROM Orders os)
+SELECT DATEDIFF(MONTH, MIN([Date]) , MAX([Date])) FROM Orders
+-- ========================================
+
+
+
 
 
 
