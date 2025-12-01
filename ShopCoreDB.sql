@@ -474,6 +474,20 @@ ALL(SELECT os.[Date] FROM Orders os)
 SELECT DATEDIFF(MONTH, MIN([Date]) , MAX([Date])) FROM Orders
 -- ========================================
 
+-- DATENAME Functions
+SELECT DATENAME(MONTH, [Date]) FROM Orders
+SELECT DATENAME(mm, GETDATE())
+SELECT STDEV(Id) FROM Stu
+SELECT SUM(Id) FROM Stu
+SELECT AVG(Id) FROM Stu
+SELECT * FROM Stu
+
+SELECT AVG(Point) FROM Stu
+SELECT STDEV(Point) FROM Stu
+
+SELECT AVG(Mark) FROM Stu
+SELECT STDEV(Mark) FROM Stu
+
 
 
 
