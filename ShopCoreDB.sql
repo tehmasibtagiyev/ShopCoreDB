@@ -456,6 +456,16 @@ SELECT DAY(Zaman) FROM Times -- Return INT
 SELECT DATEPART(year, Zaman) FROM Times -- Return INT
 SELECT DATETRUNC(MONTH, Zaman) FROM Times
 
+-- FROMPARTS
+SELECT DATEFROMPARTS(2018, 4, 19) -- Return Date
+SELECT DATETIME2FROMPARTS(2013,7,16,10,5,7,9,6) -- Return Datetime2
+SELECT DATETIMEFROMPARTS(2013,7,16,10,5,7,89) -- Return Datetime
+SELECT DATETIMEOFFSETFROMPARTS(2013,7,16,10,5,7,9,6,5,7) -- Return Datetimeoffset
+SELECT SMALLDATETIMEFROMPARTS(2018, 4, 19, 21, 2) -- Return Smalldatetimefromparts
+SELECT TIMEFROMPARTS(2018, 4, 19, 21, 2) -- Return Time
+-- ==========================
+
+
 
 
 
