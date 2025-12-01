@@ -408,6 +408,7 @@ SELECT stdev(Price) FROM Products
 -- Numeric Functions
 ALTER TABLE Stu ALTER COLUMN Point DECIMAL(18, 2)
 SELECT ABS(Mark) FROM Stu
+SELECT Mark FROM Stu
 SELECT SIGN(Mark) FROM Stu
 SELECT CEILING(Point) FROM Stu
 SELECT FLOOR(Point) FROM Stu
@@ -423,6 +424,37 @@ SELECT CAST(Id AS DECIMAL(9, 6)) FROM Stu
 SELECT TRY_CAST([Name] AS INT) FROM Stu
 SELECT CONVERT(varchar, [Date], 1) FROM Orders
 SELECT TRY_CONVERT(INT, [Name]) FROM Stu
+--==============================
+--Date Functions
+
+CREATE TABLE Times
+(
+Zaman DATE,
+Saat TIME,
+BirinciVaxt DATETIME,
+IkinciGeneral DATETIME2,
+General SMALLDATETIME,
+OffTarix DATETIMEOFFSET,
+Stamp TIMESTAMP,
+)
+alter table Times drop column Stamp
+truncate table Times
+
+select * from Times
+
+SELECT SYSDATETIME() -- datetime2(7)
+SELECT SYSUTCDATETIME() -- datetime2(7)
+SELECT SYSDATETIMEOFFSET() -- datetimeoffset(7)
+SELECT CURRENT_TIMESTAMP -- datetime	
+SELECT GETUTCDATE() -- datetime
+
+-- Important Date Functions
+SELECT GETDATE() -- Return Datetime
+SELECT YEAR(IkinciGeneral) FROM Times -- Return INT
+SELECT MONTH(OffTarix) FROM Times -- Return INT
+SELECT DAY(Zaman) FROM Times -- Return INT
+SELECT DATEPART(year, Zaman) FROM Times -- Return INT
+SELECT DATETRUNC(MONTH, Zaman) FROM Times
 
 
 
