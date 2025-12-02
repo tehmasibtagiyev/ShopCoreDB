@@ -485,8 +485,20 @@ SELECT * FROM Stu
 SELECT AVG(Point) FROM Stu
 SELECT STDEV(Point) FROM Stu
 
+SELECT STDEV(COALESCE(Mark, 0)) FROM Stu
+SELECT * FROM Stu
+
 SELECT AVG(Mark) FROM Stu
-SELECT STDEV(Mark) FROM Stu
+SELECT COUNT(COALESCE(Mark, 0)) FROM Stu
+SELECT SQUARE(Mark - (SELECT AVG(Mark) FROM Stu))  FROM Stu
+SELECT SQRT((SUM(SQUARE(s.Mark - a.AvgMark))) / (COUNT(s.Mark)) - 1)  AS SumOfSquares
+FROM Stu s
+CROSS JOIN (
+    SELECT AVG(Mark) AS AvgMark
+    FROM Stu
+) AS a
+
+
 
 
 
