@@ -399,8 +399,8 @@ SELECT RTRIM([Name], '[CYBZDCRQ]') FROM Stu
 SELECT TRIM('c' FROM [Name]) FROM Stu
 SELECT SUBSTRING([Name], 2, 3) FROM Customers
 SELECT STRING_AGG([Name], '+++') FROM Stu WHERE Id IN(1,2)
-SELECT REPLACE([Name], 'A', 'O') FROM Stu
-SELECT STUFF([Subject], 2, 2, 'C') FROM Stu
+SELECT REPLACE([Name], 'NULL', 'O') FROM Stu
+SELECT STUFF(Name, 2, 2, 'C') FROM Products
 SELECT REVERSE(Mark) FROM Stu
 SELECT REPLICATE(Mark, 4) FROM Stu
 SELECT stdev(Price) FROM Products
@@ -412,12 +412,12 @@ SELECT Mark FROM Stu
 SELECT SIGN(Mark) FROM Stu
 SELECT CEILING(Point) FROM Stu
 SELECT FLOOR(Point) FROM Stu
-SELECT ROUND(Point, 1) FROM Stu
+SELECT ROUND(Id, 1) FROM Stu
 SELECT POWER(Id, 2) FROM Stu
 SELECT Id * Id FROM Stu
 SELECT SQUARE(Point) FROM Stu
 SELECT SQRT(Point) FROM Stu
-
+SELECT * FROM Stu
 --==============================
 -- Conversion Functions
 SELECT CAST(Id AS DECIMAL(9, 6)) FROM Stu
@@ -498,6 +498,23 @@ CROSS JOIN (
     FROM Stu
 ) AS a
 
+
+SELECT MAX(Price) + p.Price FROM Products p WHERE
+p.Price <= ALL(SELECT pd.Price FROM Products pd)
+
+SELECT SUM(Price) FROM Products WHERE categoryID = 1
+SELECT SUM(Price) FROM Products WHERE categoryID = 2
+SELECT SUM(Price) FROM Products WHERE categoryID = 3
+SELECT SUM(Price) FROM Products WHERE categoryID = 4
+
+SELECT SUM(Price) FROM Products
+GROUP BY categoryID
+
+SELECT categoryID,COUNT(Price), SUM(Price) FROM Products
+GROUP BY categoryID, categoryID
+
+SELECT 3289 + 3289
+SELECT * FROM Products
 
 
 
