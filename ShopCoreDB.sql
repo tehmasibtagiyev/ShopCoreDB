@@ -403,7 +403,6 @@ SELECT REPLACE([Name], 'NULL', 'O') FROM Stu
 SELECT STUFF(Name, 2, 2, 'C') FROM Products
 SELECT REVERSE(Mark) FROM Stu
 SELECT REPLICATE(Mark, 4) FROM Stu
-SELECT stdev(Price) FROM Products
 --==============================
 -- Numeric Functions
 ALTER TABLE Stu ALTER COLUMN Point DECIMAL(18, 2)
@@ -415,8 +414,8 @@ SELECT FLOOR(Point) FROM Stu
 SELECT ROUND(Id, 1) FROM Stu
 SELECT POWER(Id, 2) FROM Stu
 SELECT Id * Id FROM Stu
-SELECT SQUARE(Point) FROM Stu
-SELECT SQRT(Point) FROM Stu
+SELECT SQUARE(Id) FROM Stu
+SELECT SQRT(Id) FROM Stu
 SELECT * FROM Stu
 --==============================
 -- Conversion Functions
@@ -424,6 +423,7 @@ SELECT CAST(Id AS DECIMAL(9, 6)) FROM Stu
 SELECT TRY_CAST([Name] AS INT) FROM Stu
 SELECT CONVERT(varchar, [Date], 1) FROM Orders
 SELECT TRY_CONVERT(INT, [Name]) FROM Stu
+SELECT * FROM Stu
 --==============================
 --Date Functions
 
@@ -516,11 +516,21 @@ GROUP BY categoryID, categoryID
 SELECT 3289 + 3289
 SELECT * FROM Products
 
+SELECT * FROM Products p WHERE 10000 >=
+any(SELECT pt.Price FROM Products pt) 
 
+SELECT MAX(Price) FROM Products HAVING MAX(Price) < 5000
 
+-- =============================
+SELECT MAX(Price) FROM Products WHERE Price < 5822
 
+SELECT * FROM Products
+SELECT p.* FROM Products p WHERE Price IN(SELECT MAX(pd.Price) 
+FROM Products pd WHERE pd.Price < 5500)
 
+SELECT MAX(Price) - MIN(Price) FROM Products 
 
+SELECT ROW_NUMBER() OVER(ORDER BY categoryID ASC) FROM Products
 
 
 
