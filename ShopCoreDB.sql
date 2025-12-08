@@ -513,7 +513,6 @@ GROUP BY categoryID
 SELECT categoryID,COUNT(Price), SUM(Price) FROM Products
 GROUP BY categoryID, categoryID
 
-SELECT 3289 + 3289
 SELECT * FROM Products
 
 SELECT * FROM Products p WHERE 10000 >=
@@ -532,23 +531,19 @@ SELECT MAX(Price) - MIN(Price) FROM Products
 
 SELECT ROW_NUMBER() OVER(ORDER BY categoryID ASC) FROM Products
 
+SELECT VALUE FROM generate_series(10, 1, -2)
 
+SELECT value FROM GENERATE_SERIES(1, 10)
 
+SELECT VALUE FROM generate_series(GETDATE(), 10)
 
+SELECT * FROM Products WHERE UPPER(LEFT([Name], 3)) = 'ASU'
 
+SELECT AVG(Mark) - AVG(CONVERT(INT, REPLACE(Mark, '0', ''))) FROM Stu
 
+SELECT SUM(REPLACE(Mark, '0', '')) FROM Stu
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+SELECT * FROM Stu
+SELECT STDEVP(Mark) FROM Stu
+    
 
