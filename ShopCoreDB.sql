@@ -545,5 +545,24 @@ SELECT SUM(REPLACE(Mark, '0', '')) FROM Stu
 
 SELECT * FROM Stu
 SELECT STDEVP(Mark) FROM Stu
-    
+
+-- Index
+SELECT * FROM Times
+
+CREATE CLUSTERED INDEX Pk_Index
+ON Times (Saat)
+
+CREATE NONCLUSTERED INDEX LS
+ON Times(BirinciVaxt)
+
+-- DROP INDEX
+DROP INDEX LS ON Times
+-- SHOW INDEX
+EXEC sp_helpindex "Times"
+
+
+
+
+
+
 
